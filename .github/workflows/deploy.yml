@@ -41,7 +41,7 @@ jobs:
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::768688893088:role/AWSAdmins
+          role-to-assume: arn:aws:iam::768688893088:role/SecureBucketDevStack-MySecureBucketGitHubOIDCRoleEC-zCS5KWlVJtSj
           aws-region: ${{ env.AWS_REGION }}
 
       - name: CDK Diff
