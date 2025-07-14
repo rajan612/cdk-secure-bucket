@@ -2,16 +2,26 @@
 
 This project contains a reusable AWS CDK construct written in TypeScript to provision an S3 bucket with optional encryption, versioning, and GitHub Actions OIDC IAM role support.
 
-## Features
+---
 
-- Create an S3 bucket with optional versioning and encryption
-- Automatically create GitHub OIDC IAM role for secure CI/CD
-- Outputs bucket name and OIDC role ARN
-- Ready-to-use GitHub Actions workflow with environment separation
+## ✨ Features
 
-## Getting Started
+- 🔐 Create an S3 bucket with optional:
+  - Versioning
+  - S3-managed encryption
+- 🔗 Automatically provision a GitHub OIDC IAM role (optional)
+- 📤 Outputs bucket name and role ARN
+- 🔁 Easily reusable via props (`SecureBucketProps`)
+- ⚙️ Deployable via GitHub Actions (coming in Part 2)
 
-```bash
-npm install
-npx cdk synth
-npx cdk deploy
+---
+
+## 🔧 SecureBucket Usage
+
+```ts
+new SecureBucket(this, 'MySecureBucket', {
+  projectId: 'abc123',
+  enableVersioning: true,
+  enableEncryption: true,
+  githubRepo: 'yourorg/yourrepo' // Optional
+});
