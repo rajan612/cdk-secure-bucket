@@ -18,7 +18,7 @@ export class SecureBucket extends Construct {
     super(scope, id);
 
     this.bucket = new Bucket(this, 'Bucket', {
-      bucketName: `${props.projectId}-my-bucket`,
+      bucketName: `${props.projectId}-${Stack.of(this).stackName.toLowerCase()}`,
       versioned: props.enableVersioning ?? false,
       encryption: props.enableEncryption ? BucketEncryption.S3_MANAGED : undefined,
     });

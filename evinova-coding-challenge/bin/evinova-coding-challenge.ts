@@ -3,14 +3,28 @@ import * as cdk from 'aws-cdk-lib';
 import { SecureBucket } from '../lib/secure-bucket';
 
 const app = new cdk.App();
+const envContext = app.node.tryGetContext('env') || 'dev';
 
-const stack = new cdk.Stack(app, 'SecureBucketDevStack', {
-  env: { region: 'us-east-1' }
-});
+if (envContext === 'dev') {
+  const devStack = new cdk.Stack(app, 'SecureBucketDevStack', {
+    env: { region: 'us-east-1' }
+  });
 
-new SecureBucket(stack, 'MySecureBucket', {
-  projectId: 'devproj',
-  enableVersioning: true,
-  enableEncryption: true,
-  githubRepo: 'rajan612/cdk-secure-bucket'
-});
+  new SecureBucket(devStack, 'MySecureBucketDev', {
+    projectId: 'devproj',
+    enableEncryption: true, // ✅ FIXED
+    githubRepo: 'rajan612/cdk-secure-bucket',
+  });
+}
+
+if (envContext === 'prod') {
+  const prodStack = new cdk.Stack(app, 'SecureBucketProdStack', {
+    env: { region: 'us-east-1' }
+  });
+
+  new SecureBucket(prodStack, 'MySecureBucketProd', {
+    projectId: 'prodproj',
+    enableEncryption: true, // ✅ FIXED
+    githubRepo: 'rajan612/cdk-secure-bucket',
+  });
+}
