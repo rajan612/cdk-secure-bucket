@@ -16,6 +16,9 @@ jobs:
   deploy-dev:
     name: Deploy to Dev
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: evinova-coding-challenge
 
     steps:
       - name: Checkout code
