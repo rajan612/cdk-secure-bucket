@@ -12,7 +12,8 @@ This project contains a reusable AWS CDK construct written in TypeScript to prov
 - 🔗 Automatically provision a GitHub OIDC IAM role (optional)
 - 📤 Outputs bucket name and role ARN
 - 🔁 Easily reusable via props (`SecureBucketProps`)
-- ⚙️ Deployable via GitHub Actions (coming in Part 2)
+- ⚙️ Multi-environment deployments: dev & prod
+- 🚀 GitHub Actions support for CI/CD (see `.github/workflows`)
 
 ---
 
