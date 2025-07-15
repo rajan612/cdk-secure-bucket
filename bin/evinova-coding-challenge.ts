@@ -12,8 +12,8 @@ if (envContext === 'dev') {
 
   new SecureBucket(devStack, 'MySecureBucketDev', {
     projectId: 'devproj',
-    enableEncryption: true, // ✅ FIXED
-    githubRepo: 'rajan612/cdk-secure-bucket',
+    enableEncryption: true,
+    githubRepo: 'rajan612/cdk-secure-bucket', // Optional: creates OIDC IAM role
   });
 }
 
@@ -24,7 +24,7 @@ if (envContext === 'prod') {
 
   new SecureBucket(prodStack, 'MySecureBucketProd', {
     projectId: 'prodproj',
-    enableEncryption: true, // ✅ FIXED
+    enableEncryption: true,
     githubRepo: 'rajan612/cdk-secure-bucket',
   });
 }

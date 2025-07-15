@@ -18,8 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: evinova-coding-challenge
-
+        working-directory: ./evinova-coding-challenge
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -55,7 +54,7 @@ jobs:
     environment: production  # ✅ creates an approval gate in GitHub UI
     defaults:
       run:
-        working-directory: evinova-coding-challenge
+        working-directory: ./evinova-coding-challenge
     steps:
       - uses: actions/checkout@v3
 
