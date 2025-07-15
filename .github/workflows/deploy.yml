@@ -41,7 +41,7 @@ jobs:
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::768688893088:role/SecureBucketDevStack-MySecureBucketDevGitHubOIDCRol-B4CYbcsKTV5i
+          role-to-assume: arn:aws:iam::<ACCOUNT-ID>:role/<ROLE-ID>
           aws-region: ${{ env.AWS_REGION }}
 
       - name: CDK Diff
@@ -66,7 +66,7 @@ jobs:
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::768688893088:role/SecureBucketProdStack-MySecureBucketProdGitHubOIDCR-sgPoIhLQdQh7
+          role-to-assume: arn:aws:iam::<ACCOUNT-ID>:role/<ROLE-ID>
           aws-region: us-east-1
 
       - run: npm install
