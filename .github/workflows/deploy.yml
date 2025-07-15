@@ -50,10 +50,12 @@ jobs:
       - name: CDK Deploy
         run: npx cdk deploy $STACK_NAME --require-approval never
   deploy-prod:
-    working-directory: evinova-coding-challenge
     needs: deploy-dev
     runs-on: ubuntu-latest
     environment: production  # ✅ creates an approval gate in GitHub UI
+    defaults:
+      run:
+        working-directory: evinova-coding-challenge
     steps:
       - uses: actions/checkout@v3
 
