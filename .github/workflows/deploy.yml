@@ -49,3 +49,25 @@ jobs:
 
       - name: CDK Deploy
         run: npx cdk deploy $STACK_NAME --require-approval never
+  deploy-prod:
+    needs: deploy-dev
+    runs-on: ubuntu-latest
+    environment: production  # ✅ creates an approval gate in GitHub UI
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::768688893088:role/SecureBucketProdStack-MySecureBucketProdGitHubOIDCR-sgPoIhLQdQh7
+          aws-region: us-east-1
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: CDK Deploy
+        run: npx cdk deploy --require-approval never --context env=prod
